@@ -23,5 +23,7 @@
 
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
-
+	<import resource="jdbc/dbConfig.xml" 			/>	<!-- JDBC 			-->
+	<import resource="mybatis/beans-mybatis.xml" 	/> 	<!-- mybatis 		-->
+	<!-- <import resource="quartz/quartz.xml"			/> --> 	<!-- quartz瀹氭椂鍣�	 -->
 </beans>
