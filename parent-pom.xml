@@ -56,13 +56,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <project.source.version>1.8</project.source.version>
-        <project.target.version>1.8</project.target.version>
-        <project.encoding>UTF-8</project.encoding>
-        <buildVersion>0.0.1-SNAPSHOT</buildVersion>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
