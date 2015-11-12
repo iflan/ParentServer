@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<!--  
+	 类型别名是为 Java 类型命名的一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余 
+	<typeAliases>
+		 也可以指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean 
+	 	<package name="domain.blog"/>
+		<typeAlias alias="Author" type="domain.blog.Author" />
+		<typeAlias alias="Blog" type="domain.blog.Blog" />
+	</typeAliases>
+	-->
+	
+	<typeAliases>
+		<typeAlias alias="Test" type="wang.gnim.netty.server.bean.Test" />
+		<typeAlias alias="TicketID" type="wang.gnim.netty.server.bean.TicketID" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="resource/mybatis/mapppers/test.xml" />
+		<mapper resource="resource/mybatis/mapppers/ticket_id.xml" />
+	</mappers>
+
+	<!-- mappers 元素是包含一组 mapper 映射器（这些 mapper的 XML文件包含了SQL代码和映射定义信息）, 下面提供了四种方式 -->
+	<!-- 
+	<mappers>
+		<mapper resource="testMybatis/a/mybatis-mapper.xml" />
+		<mapper url="file:///var/mappers/PostMapper.xml"/>
+		<mapper class="org.mybatis.builder.PostMapper"/>
+		<package name="org.mybatis.builder"/>
+	</mappers>
+	 -->
+</configuration>

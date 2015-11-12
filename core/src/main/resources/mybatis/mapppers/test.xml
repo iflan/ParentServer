@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace.id 组合在一起可以作为在SqlSession 里SelectOne这些方法 的参数调用-->
+<mapper namespace="wang.gnim.netty.server.dao.mybatis.TestDAO">
+
+	<select id="selectAll" resultType="Test">
+		select * from test;
+	</select>
+
+</mapper>

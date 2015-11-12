@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="user.ds"/>
+	</bean>
+
+	<bean id="user.sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="user.ds"/>
+		<property name="configLocation" value="classpath:resource/mybatis/config-sqlmap.xml"/>
+	</bean>
+
+	<bean id="user.sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="user.sqlSessionFactory"/>
+	</bean>
+    
+   
+	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
+	
+	<!-- import 从同级目录查找文件 -->
+	<import resource="beans-dao.xml" />
+	<import resource="config-sqlmap.xml" />
+	<import resource="config-mybatis.xml" /> 
+	
+</beans>

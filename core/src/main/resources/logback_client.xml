@@ -1,0 +1,48 @@
+<configuration>
+	
+	<contextName>logclient</contextName>  
+	
+	<timestamp key="bySecond" datePattern="yyyy'-'MM'-'dd" /> 
+	<property name="host" value="localhost"></property>
+	<property name="port_send" value="514" />
+
+	<appender name="SocketAppenderN" class="wang.gnim.netty.server.core.log.client.SimpleSocketAppender">
+		<remoteHost>${host}</remoteHost>
+		<port>${port_send}</port>
+		<reconnectionDelay>10000</reconnectionDelay>
+		<stackTracePattern>SocketAppenderN.log</stackTracePattern>
+		<suffixPattern>%date %p %msg</suffixPattern>
+	</appender>
+	
+	<appender name="SocketAppenderM" class="wang.gnim.netty.server.core.log.client.SimpleSocketAppender">
+		<remoteHost>${host}</remoteHost>
+		<port>${port_send}</port>
+		<reconnectionDelay>10000</reconnectionDelay>
+		<stackTracePattern>SocketAppenderM.log</stackTracePattern>
+		<suffixPattern>[%thread] %p %msg</suffixPattern>
+	</appender>
+
+	<appender name="MongonDBAppender1" class="wang.gnim.netty.server.core.log.client.MongoDBAppender">
+		<remoteHost>${host}</remoteHost>
+		<port>27017</port>
+	</appender>
+	
+	<logger name="logger.SocketAppenderM" level="DEBUG" additivity="false">
+		<appender-ref ref="SocketAppenderM" />
+	</logger>
+	
+	<logger name="logger.SocketAppenderN" level="DEBUG" additivity="false">
+		<appender-ref ref="SocketAppenderN" />
+	</logger>
+	
+	<logger name="logger.MongonDBAppender" level="DEBUG" additivity="false">
+		<appender-ref ref="MongonDBAppender1" />
+	</logger>
+	
+	<root level="DEBUG">
+		<appender-ref ref="MongonDBAppender1" />
+		<appender-ref ref="SocketAppenderN" />
+		<appender-ref ref="SocketAppenderM" />
+	</root>
+
+</configuration>

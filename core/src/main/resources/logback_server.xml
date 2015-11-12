@@ -1,0 +1,45 @@
+<configuration>
+
+	<contextName>log_server</contextName>
+
+	<timestamp key="bySecond" datePattern="yyyy'-'MM'-'dd" />
+
+	<property name="port_revice" value="514" />
+
+	<receiver class="ch.qos.logback.classic.net.server.ServerSocketReceiver">
+		<port>${port_revice}</port>
+		
+	</receiver>
+
+	<!-- 
+	<appender name="CUSTOM" class="wang.gnim.netty.server.core.log.server.SimpleFileApprender">
+		<append>true</append>
+		<file>log/${stackTracePattern}</file>
+		<prudent></prudent>
+		<encoder>
+			<pattern>${suffixPattern}</pattern>
+		</encoder>
+	</appender>
+ 	-->
+
+	<appender name="SIFT" class="wang.gnim.netty.server.core.log.server.SimpleSiftingAppender">
+		<discriminator>
+			<key>stackTracePattern</key>
+			<defaultValue>null</defaultValue>
+		</discriminator>
+		<sift>
+			<appender name="FILE-${stackTracePattern}" class="ch.qos.logback.core.FileAppender">
+				<file>log/${stackTracePattern}</file>
+				<append>true</append>
+				<layout class="ch.qos.logback.classic.PatternLayout">
+					<pattern>${suffixPattern}</pattern>
+				</layout>
+			</appender>
+		</sift>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="SIFT" />
+	</root>
+
+</configuration>
