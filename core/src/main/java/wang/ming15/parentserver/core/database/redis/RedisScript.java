@@ -1,4 +1,4 @@
-package wang.ming15.netty.core.redis;
+package wang.ming15.parentserver.core.database.redis;
 
 import java.util.List;
 
